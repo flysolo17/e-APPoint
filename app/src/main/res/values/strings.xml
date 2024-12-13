@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">e-APPoint</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="show">Show</string>
+    <string name="hide">Hide</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="sign_in">Sign in</string>
+
+    <string name="reset_message">If you lost your password and wish to reset it , enter your email below and so that we can send you the reset link.</string>
+    <string name="create_account">Create Account</string>
+    <string name="fullname">Fullname</string>
+    <string name="phone">Phone</string>
+    <string name="back">Back</string>
+</resources>

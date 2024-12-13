@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "684667731754",
+    "project_id": "e-appointment-app-921ee",
+    "storage_bucket": "e-appointment-app-921ee.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684667731754:android:eab13deb1253f146dd2853",
+        "android_client_info": {
+          "package_name": "com.example.e_appointment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "684667731754-bes2ib6ge2p1rvbdic2b7imn5sllq3vn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvu8XBatzPrnQUT_A0NtDBAZ-eDB4wAa8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "684667731754-bes2ib6ge2p1rvbdic2b7imn5sllq3vn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684667731754:android:844b19d892113a73dd2853",
+        "android_client_info": {
+          "package_name": "com.flysolo.e_appoint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "684667731754-bes2ib6ge2p1rvbdic2b7imn5sllq3vn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvu8XBatzPrnQUT_A0NtDBAZ-eDB4wAa8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "684667731754-bes2ib6ge2p1rvbdic2b7imn5sllq3vn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
