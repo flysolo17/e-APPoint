@@ -48,7 +48,7 @@ fun ViewAppointmentDialog(
                         .padding(16.dp)
                         .verticalScroll(rememberScrollState())
                 ) {
-                    Text("Doctor: Ivery Abegail Policarpio", style = MaterialTheme.typography.labelSmall)
+                    Text("Doctor: JULIE ANN E. TEJEREO, DMD", style = MaterialTheme.typography.labelSmall)
                     Text("Date: ${appointments.schedules?.date}", style = MaterialTheme.typography.labelSmall)
                     Text("Time: ${appointments.schedules?.time}", style = MaterialTheme.typography.labelSmall)
                     Text("Status: ${appointments.status}", style = MaterialTheme.typography.labelSmall)

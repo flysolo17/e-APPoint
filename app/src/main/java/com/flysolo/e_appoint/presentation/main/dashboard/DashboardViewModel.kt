@@ -1,9 +1,8 @@
-package com.flysolo.e_appoint.presentation.main.appointments
+package com.flysolo.e_appoint.presentation.main.dashboard
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.res.stringArrayResource
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.flysolo.e_appoint.repository.appointment.AppointmentRepository
@@ -15,24 +14,45 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class AppointmentViewModel @Inject constructor(
-    private val appointmentRepository : AppointmentRepository
+class DashboardViewModel @Inject constructor(
+    private val appointmentRepository: AppointmentRepository
 ) : ViewModel() {
-    var state by mutableStateOf(AppointmentState())
-    fun events(e : AppointmentEvents) {
+    var state by mutableStateOf(DashboardState())
+    init {
+        events(DashboardEvents.OnGetAllAppointments)
+    }
+    fun events(e : DashboardEvents) {
         when(e) {
-            AppointmentEvents.OnGetAllAppointments -> getAllAppointments()
-            is AppointmentEvents.OnGetMyAppointments -> getMyAppointments(e.userID)
-            is AppointmentEvents.OnSetUser -> state = state.copy(
-                users = e.users
-            )
-
-            is AppointmentEvents.OnCancelAppointment -> cancelAppointment(e.appointmentID)
-            is AppointmentEvents.OnCompleteAppointment -> complete(e.appointmentID)
-            is AppointmentEvents.OnConfirmAppointment -> confirm(e.appointmentID)
-            is AppointmentEvents.OnDeclineAppointment -> decline(e.appointmentID)
+            DashboardEvents.OnGetAllAppointments -> getAppointments()
+            is DashboardEvents.OnCancelAppointment -> cancelAppointment(appointmentID = e.appointmentID)
+            is DashboardEvents.OnCompleteAppointment -> complete(e.appointmentID)
+            is DashboardEvents.OnConfirmAppointment -> confirm(e.appointmentID)
+            is DashboardEvents.OnDeclineAppointment -> decline(e.appointmentID)
         }
     }
+
+    private fun getAppointments() {
+        viewModelScope.launch {
+            appointmentRepository.getAllAppointments {
+                state = when(it) {
+                    is UiState.Error -> state.copy(
+                        isLoading = false,
+                        errors = null,
+                    )
+                    UiState.Loading -> state.copy(
+                        isLoading = true,
+                        errors = null
+                    )
+                    is UiState.Success -> state.copy(
+                        isLoading = false,
+                        errors = null,
+                        appointments = it.data
+                    )
+                }
+            }
+        }
+    }
+
 
     private fun decline(appointmentID: String) {
         viewModelScope.launch {
@@ -130,50 +150,4 @@ class AppointmentViewModel @Inject constructor(
         }
 
     }
-
-    private fun getAllAppointments() {
-        viewModelScope.launch {
-            appointmentRepository.getAllAppointments {
-                state = when(it) {
-                    is UiState.Error -> state.copy(
-                        isLoading = false,
-                        errors = it.message
-                    )
-                    UiState.Loading -> state.copy(
-                        isLoading = true,
-                        errors = null
-                    )
-                    is UiState.Success -> state.copy(
-                        isLoading = false,
-                        errors = null,
-                        appointments = it.data
-                    )
-                }
-            }
-        }
-    }
-
-    private fun getMyAppointments(userID: String) {
-        viewModelScope.launch {
-            appointmentRepository.getAppointmentsByUser(userID) {
-                state = when(it) {
-                    is UiState.Error -> state.copy(
-                        isLoading = false,
-                        errors = it.message
-                    )
-                    UiState.Loading -> state.copy(
-                        isLoading = true,
-                        errors = null
-                    )
-                    is UiState.Success -> state.copy(
-                        isLoading = false,
-                        errors = null,
-                        appointments = it.data
-                    )
-                }
-            }
-        }
-    }
-
-
 }

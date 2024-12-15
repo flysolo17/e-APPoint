@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Card
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.ListItem
@@ -16,6 +18,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.flysolo.e_appoint.utils.BackButton
 import com.flysolo.e_appoint.utils.display
@@ -50,7 +53,7 @@ fun NotificationScreen(
 
                 },
                 title = {
-                    Text("Create Appointment")
+                    Text("Notifications")
                 },
             )
         }
@@ -66,14 +69,19 @@ fun NotificationScreen(
                 }
             }
             items(state.inboxes) {
-                ListItem(
-                    headlineContent = {
-                        Text("${it.message}")
-                    },
-                    supportingContent = {
-                        Text(it.createdAt.display())
-                    }
-                )
+                ElevatedCard(
+                    modifier = modifier.fillMaxWidth().padding(4.dp)
+                ) {
+                    ListItem(
+                        headlineContent = {
+                            Text("${it.message}", style = MaterialTheme.typography.titleSmall)
+                        },
+                        supportingContent = {
+                            Text(it.createdAt.display())
+                        }
+                    )
+                }
+
             }
         }
     }

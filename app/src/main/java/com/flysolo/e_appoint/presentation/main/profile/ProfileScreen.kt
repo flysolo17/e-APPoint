@@ -162,11 +162,12 @@ fun ProfileScreen(
                     }) {
                         Text("Delete Account",modifier = modifier.padding(8.dp))
                 }
-                OutlinedButton(
+                Button(
                     shape = MaterialTheme.shapes.small,
                     modifier = modifier.fillMaxWidth(),
                     colors = ButtonDefaults.outlinedButtonColors(
-                        contentColor = MaterialTheme.colorScheme.errorContainer
+                        containerColor = MaterialTheme.colorScheme.errorContainer,
+                        contentColor = MaterialTheme.colorScheme.onErrorContainer
                     ),
                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.errorContainer),
                     onClick = {

@@ -57,7 +57,11 @@ fun AppointmentsScreen(
 
         items(state.appointments) {
             if (state.users?.type == UserType.ADMIN) {
-                AppointmentAdminCard(appointments = it, onClick = {}, onCancel = {})
+                AppointmentAdminCard(appointments = it, onClick = {},
+                    onDecline = { events(AppointmentEvents.OnDeclineAppointment(it)) },
+                    onConfirmed = { events(AppointmentEvents.OnConfirmAppointment(it)) },
+                    onComplete = {events(AppointmentEvents.OnCompleteAppointment(it))}
+                    )
             } else {
                 AppointmentUserCard(appointments = it, onClick = {}, onCancel = {
                     events(AppointmentEvents.OnCancelAppointment(it))

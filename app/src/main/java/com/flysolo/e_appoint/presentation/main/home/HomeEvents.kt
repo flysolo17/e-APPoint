@@ -8,4 +8,8 @@ sealed interface HomeEvents {
         val users: Users ?
     ) : HomeEvents
 
+
+    data class OnGetAppointments(val userID : String ) : HomeEvents
+
+    data class OnCancel(val appointmentID : String) : HomeEvents
 }

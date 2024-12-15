@@ -4,6 +4,13 @@ import androidx.annotation.DrawableRes
 import com.flysolo.e_appoint.R
 import com.flysolo.e_appoint.config.AppRouter
 
+data class NavDrawerItems(
+    val label : String,
+    @DrawableRes val selectedIcon : Int,
+    @DrawableRes val unselectedIcon : Int,
+    val route : String
+)
+
 
 data class BottomNavigationItems(
     val label : String,

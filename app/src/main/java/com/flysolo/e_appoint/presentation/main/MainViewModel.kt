@@ -23,6 +23,13 @@ class MainViewModel @Inject constructor(
         when(e) {
             MainEvents.OnGetAllAppointments -> getAppointments()
             MainEvents.OnGetCurrentUser -> getUser()
+            MainEvents.Logout -> logout()
+        }
+    }
+
+    private fun logout() {
+        viewModelScope.launch {
+            authRepository.logout()
         }
     }
 

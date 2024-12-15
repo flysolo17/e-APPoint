@@ -1,7 +1,11 @@
 package com.flysolo.e_appoint.presentation.main.appointments
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material3.FilledIconButton
@@ -12,6 +16,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,6 +28,8 @@ import com.flysolo.e_appoint.models.appointments.AppointmentStatus
 import com.flysolo.e_appoint.models.appointments.Appointments
 import com.flysolo.e_appoint.presentation.main.view_appointment.ViewAppointmentDialog
 import com.flysolo.e_appoint.utils.CancelableIconButton
+import com.flysolo.e_appoint.utils.getColor
+import java.util.Locale
 
 
 @Composable
@@ -50,7 +57,20 @@ fun AppointmentUserCard(
     ) {
         ListItem(
             overlineContent = {
-                Text("${appointments.status.name.lowercase()}")
+                val color = appointments.status.getColor()
+                Box(
+                    modifier = modifier.wrapContentSize().background(
+                        color = color,
+                        shape = RoundedCornerShape(2.dp)
+                    ).padding(2.dp)
+                ) {
+                    Text(appointments.status.name.replaceFirstChar {
+                        if (it.isLowerCase()) it.titlecase(
+                            Locale.getDefault()
+                        ) else it.toString()
+                    }, color = contentColorFor(color), style = MaterialTheme.typography.labelSmall
+                    )
+                }
             },
             headlineContent = {
                 Text(

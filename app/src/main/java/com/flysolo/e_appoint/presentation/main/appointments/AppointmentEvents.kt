@@ -13,4 +13,16 @@ sealed interface AppointmentEvents {
     data class OnCancelAppointment(
         val appointmentID : String
     ) : AppointmentEvents
+
+    data class OnDeclineAppointment(
+        val appointmentID: String
+    ) : AppointmentEvents
+
+    data class OnConfirmAppointment(
+        val appointmentID: String
+    ) : AppointmentEvents
+
+    data class OnCompleteAppointment(
+        val appointmentID: String
+    ) : AppointmentEvents
 }

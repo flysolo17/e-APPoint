@@ -9,6 +9,7 @@ data class Users(
     val email : String ? = null,
     val profile : String ? = null,
     val type : UserType = UserType.CLIENT
+
 )
 
 

@@ -29,6 +29,7 @@ sealed class AppRouter(
 
     //BOTTOM NAV
     data object HOME : AppRouter(route = "home")
+
     data object APPOINTMENTS : AppRouter(route = "appointments")
     data object PROFILE : AppRouter(route = "profile")
 
@@ -39,5 +40,11 @@ sealed class AppRouter(
 
 
 
+
+    //drawer
+    data object PERSONAL_INFO : AppRouter(route = "info")
+    data object CONTACT_AND_SECURITY : AppRouter(route = "contact")
+    data object HELP_CENTER : AppRouter(route = "help")
+    data object ABOUT_US : AppRouter(route = "about")
 
 }
