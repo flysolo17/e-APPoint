@@ -60,6 +60,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.flysolo.e_appoint.models.users.UserType
 import com.flysolo.e_appoint.utils.Avatar
 import com.flysolo.e_appoint.utils.shortToast
 import kotlinx.coroutines.delay
@@ -95,7 +96,7 @@ fun MainScreen(
             route = AppRouter.PERSONAL_INFO.route
         ),
         NavDrawerItems(
-            label = "Contact and Security",
+            label = "Contacts",
             selectedIcon = R.drawable.lock_selected,
             unselectedIcon = R.drawable.lock_unselected,
             route = AppRouter.CONTACT_AND_SECURITY.route
@@ -213,22 +214,25 @@ fun MainScreen(
                             Text(route ?:"e-APPoint")
                         },
                         actions = {
-                            IconButton(
-                                onClick = {navHostController.navigate(AppRouter.NOTIFICATIONS.route)}
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Notifications,
-                                    contentDescription = "Notifications"
-                                )
+                            if (state.users?.type == UserType.CLIENT) {
+                                IconButton(
+                                    onClick = {navHostController.navigate(AppRouter.NOTIFICATIONS.route)}
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.Notifications,
+                                        contentDescription = "Notifications"
+                                    )
+                                }
+                                IconButton(
+                                    onClick = {navHostController.navigate(AppRouter.CREATE_APPOINTMENT.route)}
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.Add,
+                                        contentDescription = "Create"
+                                    )
+                                }
                             }
-                            IconButton(
-                                onClick = {navHostController.navigate(AppRouter.CREATE_APPOINTMENT.route)}
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Add,
-                                    contentDescription = "Create"
-                                )
-                            }
+
                         }
                     )
                 },

@@ -60,6 +60,10 @@ fun ContactScreen(
                     value = "09306517566"
                 )
                 RowData(
+                    label = "Email:",
+                    value = "omscsjdentalunit@gmail.com"
+                )
+                RowData(
                     label = "License #:",
                     value = "48859"
                 )

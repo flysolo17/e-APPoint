@@ -51,6 +51,8 @@ fun ViewAppointmentDialog(
                     Text("Doctor: JULIE ANN E. TEJEREO, DMD", style = MaterialTheme.typography.labelSmall)
                     Text("Date: ${appointments.schedules?.date}", style = MaterialTheme.typography.labelSmall)
                     Text("Time: ${appointments.schedules?.time}", style = MaterialTheme.typography.labelSmall)
+                    Text("Client name: ${appointments.clientInfo?.name}", style = MaterialTheme.typography.labelSmall)
+                    Text("Phone: ${appointments.clientInfo?.phone}", style = MaterialTheme.typography.labelSmall)
                     Text("Status: ${appointments.status}", style = MaterialTheme.typography.labelSmall)
                     Text("Notes: ${appointments.note ?: "No additional notes."}", style = MaterialTheme.typography.labelSmall)
                 }

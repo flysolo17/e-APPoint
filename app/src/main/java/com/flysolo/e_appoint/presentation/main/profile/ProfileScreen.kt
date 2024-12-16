@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.flysolo.e_appoint.R
 import com.flysolo.e_appoint.config.AppRouter
+import com.flysolo.e_appoint.models.users.UserType
 import com.flysolo.e_appoint.presentation.auth.change_password.ChangePasswordEvents
 import com.flysolo.e_appoint.presentation.navigation.MainNavGraph
 import com.flysolo.e_appoint.utils.Avatar
@@ -148,20 +149,22 @@ fun ProfileScreen(
                     Text("Change Password",modifier = modifier.padding(8.dp))
                 }
 
+                if(state.users?.type == UserType.CLIENT) {
+                    Button(
+                        shape = MaterialTheme.shapes.small,
 
-                Button(
-                    shape = MaterialTheme.shapes.small,
-
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.errorContainer,
-                        contentColor = MaterialTheme.colorScheme.onErrorContainer
-                    ),
-                    modifier = modifier.fillMaxWidth(),
-                    onClick = {
-                        showDialog = true
-                    }) {
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.errorContainer,
+                            contentColor = MaterialTheme.colorScheme.onErrorContainer
+                        ),
+                        modifier = modifier.fillMaxWidth(),
+                        onClick = {
+                            showDialog = true
+                        }) {
                         Text("Delete Account",modifier = modifier.padding(8.dp))
+                    }
                 }
+
                 Button(
                     shape = MaterialTheme.shapes.small,
                     modifier = modifier.fillMaxWidth(),
